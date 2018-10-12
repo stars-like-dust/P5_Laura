@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Coolest Project Ever</title>
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+
+  <!-- Bootstrap import -->
+  <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+
+
+  <!-- Jqueryreference -->
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+   
+  
+  <!-- scroll magic connect -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
+ 
+<script src="static/js/app.js"></script>
+
+<!-- ajax, bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="./static/css/style.css">
+</head>
+
+
+<!-- Insert header image -->
+<body>
+
+    <div>
+        <img src="static/images/PLASTIC FOR LAURA.jpg" class='headimage'
+        alt='Plastic' title="Plastic" />
+        
+    </div>
+
+
+
+<!-- Carasol copy start -->
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+      <li data-target="#myCarousel" data-slide-to="5"></li>
+      <li data-target="#myCarousel" data-slide-to="6"></li>
+      <li data-target="#myCarousel" data-slide-to="7"></li>
+      <li data-target="#myCarousel" data-slide-to="8"></li>
+    </ol>
+  
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+  
+      {% for hemi in dict.plastic_news %}
+      
+      <div class="item">
+        <div class="thumbnail">
+
+          <a href= {{ hemi["link"] }}>
+            <center><h3 style = "color: black;">{{ hemi["title"] }}</h3></center>
+            <div class="caption">
+                <center><p>{{ hemi["snippet"] }} - {{ hemi["source"] }}</p></center>
+            </div>
+            <img src={{ hemi["img_url"] }}  class="news">
+          </a>
+          
+        </div>
+        <br>
+        <br>
+      </div>
+                      
+    {% endfor %}
+      <script>d3.select(".item")
+        .classed("active", true);</script>
+    </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+  <!-- Carasol end -->
+
+  <!-- Intro parahraph -->
+  <div class="spacer s2"></div>
+  <div id="trigger1" class="spacer s0"></div>
+  <div id="pin1" class="box2 blue">
+     <section id=boxedOG>
+      <h1> Plastic Production</h1>
+      <p> Widescale Commercial plastic production began in 1950s.</p>
+       <p> Between 1950 and 2015 humans have created more than 7,823,000,000 tones of plastic.</p>
+        <p>This is a study of the perils of proliferating plastics plaguing our planet.</p>
+  </section>
+    <a href="#" class="viewsource"></a>
+  </div>
+  <!-- finish -->
+
+
+    <br> 
+    <br>
+  <!-- div to insert graph -->
+  
+
+  <div class="container">
+    <div class="row">
+      <!-- Start Summary Column-->
+      <div class="col-md-8" id="graph">
+    <div id="PopDiv"></div>
+      <script src="static/js/lineChartPopulation.js"></script>
+      </div>
+      <div>
+          <div class="col-md-4"></div>
+          <span class="border"></span>
+          <section id="boxed1">
+              <p> As population increases so does the demand we put on earth’s resources.</p>  
+               <p> Increasing population partially explains the increase of plastic production. </p>
+               <p>However, overtime the demand for plastic has risen faster than population alone.</p>
+          </section>
+          </div>
+    </div>
+    </div>
+    <!-- finish -->
+
+  <!-- div insert population graph -->
+  <br> 
+    <br>
+
+  <div class="container">
+    <div class="row">
+      <!-- Start Summary Column-->
+      <div class="col-md-8">
+    <div id="myDiv2"></div>
+      <script src="static/js/linechartlaura.js"></script>
+      </div>
+      <div>
+      <div class="col-md-4"></div>
+      <span class="border"></span>
+      <section id="boxed1">
+      <p> In the twentieth century worldwide supply chains, massive industrial production</p>
+         <p> and an individual’s personal wealth has become achievable.</p>
+         <p> While there are benefits of this system there are downsides such as waste, </p>
+          <p>consumption without thought and pollution. </p>
+          <p>There is a direct correlation between worldwide gross domestic product</p>
+          <p>and the increase of plastic production.</p>
+           
+      </section>
+      </div>
+    </div>
+    </div>
+    <!-- finish -->
+    <b>Again some space por favor</b>
+    <b>Again some space por favor</b>
+
+    <!-- map div -->
+    <div id="map"></div>
+    <b>Again some space por favor</b>
+    <b>Again some space por favor</b>
+
+    <!-- insert AB graph -->
+    <div class="container">
+      <div class="row">
+        <!-- Start Summary Column-->
+        <div class="col-md-8">
+      <div id="plot"></div>
+        <script src="static/js/AnnabGraph1.js"></script>
+        </div>
+        <div>
+        <div class="col-md-4"></div>
+        <span class="border"></span>
+        <section id="boxed1">
+        <p> This plastic waste comes from residential, commercial, institutional or industrial sources. </p>
+           <p> Generation: weight of the waste before recovery or discarding</p>
+            <p>Recovery: weight of recycled or composted waste</p>
+           <p> Discarded: weight of waste dumped in a landfill or burned to produce energy </p>
+        </section>
+        </div>
+      </div>
+      </div>
+
+      <!-- AB Graph 2 -->
+      <br> 
+      <br>
+
+      <div class="container">
+        <div class="row">
+          <!-- Start Summary Column-->
+          <div class="col-md-8">
+        <div id="plot2"></div>
+          <script src="static/js/ABGraph2.js"></script>
+          </div>
+          <div>
+          <div class="col-md-4"></div>
+          <span class="border"></span>
+          <section id="boxed1">
+          <p> These population figures are for jurisdictions in the United States that have passed 
+            legislation banning or charging a fee for plastic shopping bags as of April 2014. </p>
+          <p>California has made huge strides in lessening their contribution to single-use plastic bag waste, and the rest of the country is following suit. </p>
+          </section>
+          </div>
+        </div>
+        </div>
+
+        <br> 
+        <br>
+    
+  <!-- AB image -->
+  <img src="static/images/ABPicture.png" class="AB"  alt="Snow">
+
+  
+
+
+
+  <!-- ScrollMagictest sticky -->
+  <script>
+      // init controller
+      var controller = new ScrollMagic.Controller();
+    </script>
+     
+    <div class="spacer s2"></div>
+    <div id="trigger1" class="spacer s0"></div>
+    <div id="pin1" class="box2 blue">
+       
+      <!-- <p>Stay where you are (at least for a while).</p> -->
+      <a href="#" class=""></a>
+    </div>
+    <div class="spacer s2"></div>
+    <script>
+      $(function () { // wait for document ready
+        // build scene
+        var scene = new ScrollMagic.Scene({triggerElement: "#trigger1", duration: 300})
+                .setPin("#pin1")
+                // .addIndicators({name: "1 (duration: 300)"}) // add indicators (requires plugin)
+                .addTo(controller);
+      });
+    </script>
+
+  <!-- ScrollMagictest sticky end -->
+
+
+  <!-- scroll Magictest section swipe -->
+  <style type="text/css">
+    .panel {
+      height: 100%;
+      width: 100%;
+    }
+    .panel.green {
+      margin-bottom: 400px
+    }
+
+    /* Slide one start */
+  </style>
+  <section class="panel" id='slideone'>
+
+<div class="row">
+  <div class="column">
+    <p id='slidetext'>If Nikola Tesla used a plastic straw it would still exist today</p>
+    <img src="static/images/Nikola.png" class='Nikola'  alt="Snow">
+    
+  </div>
+  <div class="column">
+      <img src="static/images/InFact.png" class="InFact"  alt="Snow">
+  </div>
+  <div class="column">
+  </div>
+  <section id="boxed2">
+    <p>The breakdown of plastic is dependant on many factors
+        such as chemical composition, temperature, sunlight exposure and thickness. 
+        Common plastics used for items such as water bottles breaks down between 
+        450-1000 years.  As plastics breakdown they continue to harm the environment.
+        To understand the effect of plastics use the following links:
+        <a herf = "https://science.howstuffworks.com/plastic.htm"> How Stuff Works</a>
+       <a herf=  "https://www.washingtonpost.com/news/politics/wp/2018/06/11/one-reported-sticking-point-at-the-g-7-plastics-pollution-in-the-ocean/?utm_term=.b6e0d525bd62"> Plastics Washington Post</a>
+        </p>
+    </section>
+</div>
+    
+  </section>
+
+  <!-- slide two start -->
+  <section class="panel" id="slidetwo">
+    
+    <!-- startMyCodepanel2 -->
+    <div class="row">
+      <div class="column">
+        <p id='slidetext'>Fact: These extinct dinosaurs are mad at you </p>
+        <img src="static/images/dino.png" class="dino"  alt="Snow">
+        
+      </div>
+      <div class="column">
+          <img src="static/images/InFact.png" class="InFact"  alt="Snow">
+      </div>
+      <div class="column">
+      </div>
+      <section id="boxed2">
+        <p> Plastic production is not sustainable for the simple reason that it uses non-renewable resources.  
+            4% on global oil production is consumed in the production of plastic.
+           </p>
+        </section>
+    </div>
+
+    <!-- StopMyCodePanel2 -->
+  </section>
+  <!-- StartSlidethree -->
+  <section class="panel" id='slidethree'>
+    
+    <div class="row">
+      <div class="column">
+        <p id='slidetext'>What is killing our environment 
+          and is twice the size ofTexas?  The Great Pacific Garbage Patch..... YEEEE HaWWWW</p>
+        <img src="static/images/texas.png" class='Nikola'  alt="Snow">
+        
+      </div>
+      <div class="column">
+          <img src="static/images/InFact.png" class="InFact"  alt="Snow">
+      </div>
+      <div class="column">
+      </div>
+      <section id="boxed3">
+        <p>Due to the ocean’s currents plastic littering the oceans converge on several points. 
+           Most notable is the Great Pacific garbage patch which is twice the size of Texas.  
+           “…So there are garbage patches of all different sizes and shapes and compositions. 
+           The one that we know the most about is the Great Pacific Garbage Patch which lies in an area between Hawaii and California. What we know about this area is that it's made up of tiny micro plastics, almost akin to a peppery soup, with scattered larger items, fishing gear, those kind of items swirling around."
+            Dianna Parker, communications specialist with NOAA's Marine Debris Program.
+           </p>
+        </section>
+    </div>
+  </section>
+  <section class="panel" id='slidefour'> -->
+
+  <!DOCTYPE doctype html>
+  <html>
+  <head>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Grocery bag comparisons for greenhouse gas emissions - Our World in Data
+  </title>
+  <meta content="Number of times a given grocery bag type would have to be reused to have as low greenhouse gas emissions as a standard single-use plastic bag (LDPE; Low-density polyethylene). Greenhouse gas emissions for each material type were measured over a full life-cycle analysis (LCA). A value of 5 would indicate a given bag type would have to be reused 5 times to have as low a greenhouse gas footprint as a standard plastic bag." name="description"/>
+  <link href="https://ourworldindata.org/grapher/grocery-bag-comparisons-ghg" rel="canonical"/>
+  <meta content="1149943818390250" property="fb:app_id"/>
+  <meta content="https://ourworldindata.org/grapher/grocery-bag-comparisons-ghg" property="og:url"/>
+  <meta content="Grocery bag comparisons for greenhouse gas emissions" property="og:title"/>
+  <meta content="Number of times a given grocery bag type would have to be reused to have as low greenhouse gas emissions as a standard single-use plastic bag (LDPE; Low-density polyethylene). Greenhouse gas emissions for each material type were measured over a full life-cycle analysis (LCA). A value of 5 would indicate a given bag type would have to be reused 5 times to have as low a greenhouse gas footprint as a standard plastic bag." property="og:description"/>
+  <meta content="https://ourworldindata.org/grapher/exports/grocery-bag-comparisons-ghg.png?v=1" property="og:image"/>
+  <meta content="850" property="og:image:width"/>
+  <meta content="600" property="og:image:height"/>
+  <meta content="Our World in Data" property="og:site_name"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@OurWorldInData" name="twitter:site"/>
+  <meta content="@OurWorldInData" name="twitter:creator"/>
+  <meta content="Grocery bag comparisons for greenhouse gas emissions" name="twitter:title"/>
+  <meta content="Number of times a given grocery bag type would have to be reused to have as low greenhouse gas emissions as a standard single-use plastic bag (LDPE; Low-density polyethylene). Greenhouse gas emissions for each material type were measured over a full life-cycle analysis (LCA). A value of 5 would indicate a given bag type would have to be reused 5 times to have as low a greenhouse gas footprint as a standard plastic bag." name="twitter:description"/>
+  <meta content="https://ourworldindata.org/grapher/exports/grocery-bag-comparisons-ghg.png?v=1" name="twitter:image"/>
+  <style>
+   html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        figure[data-grapher-src], #fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #fallback > img {
+            max-width: 100%;
+            border: 1px solid #ccc;
+        }
+  </style>
+  <noscript>
+   <style>
+    figure { display: none !important; }
+   </style>
+  </noscript>
+  <link href="https://ourworldindata.org/grapher/assets/commons.bundle.521782e703f0fe72f108.css" rel="stylesheet"/>
+  <link as="fetch" crossorigin="" href="/grapher/data/variables/97809.json?v=1" rel="preload"/>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-42018644-1">
+  </script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-42018644-1');
+  </script>
+ </head>
+ <body class="singleChart">
+  <figure data-grapher-src="/grapher/grocery-bag-comparisons-ghg">
+  </figure>
+  <noscript id="fallback">
+   <img src="https://d33wubrfki0l68.cloudfront.net/1c4143db628012300bf2e4f73529f32f2174085e/64bb5/grapher/exports/grocery-bag-comparisons-ghg.svg"/>
+   <p>
+    Interactive visualization requires JavaScript
+   </p>
+  </noscript>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,fetch">
+  </script>
+  <script src="https://ourworldindata.org/grapher/assets/commons.bundle.521782e703f0fe72f108.js">
+  </script>
+  <script src="https://ourworldindata.org/grapher/assets/charts.bundle.521782e703f0fe72f108.js">
+  </script>
+  <script>
+   var jsonConfig = {"map":{"projection":"World","colorSchemeLabels":[],"colorSchemeValues":[],"customNumericColors":[],"customCategoryColors":{},"customCategoryLabels":{},"customHiddenCategories":{}},"tab":"chart","slug":"grocery-bag-comparisons-ghg","type":"DiscreteBar","title":"Grocery bag comparisons for greenhouse gas emissions","xAxis":{"scaleType":"linear"},"yAxis":{"min":0,"scaleType":"linear"},"version":1,"subtitle":"Number of times a given grocery bag type would have to be reused to have as low greenhouse gas emissions as a standard single-use plastic bag (LDPE; Low-density polyethylene). Greenhouse gas emissions for each material type were measured over a full life-cycle analysis (LCA). A value of 5 would indicate a given bag type would have to be reused 5 times to have as low a greenhouse gas footprint as a standard plastic bag.","hasMapTab":false,"stackMode":"absolute","dimensions":[{"display":{"unit":"reuses","shortUnit":"reuses"},"property":"y","variableId":97809}],"sourceDesc":"Danish Environmental Protection Agency (2018)","hasChartTab":true,"isPublished":true,"selectedData":[{"index":0,"entityId":37893},{"index":0,"entityId":37895},{"index":0,"entityId":37898},{"index":0,"entityId":37897},{"index":0,"entityId":37896},{"index":0,"entityId":37892},{"index":0,"entityId":37889},{"index":0,"entityId":37890},{"index":0,"entityId":37891},{"index":0,"entityId":37894}],"addCountryMode":"disabled","baseColorScheme":"owid-distinct","invertColorScheme":true,"hideTitleAnnotation":true,"id":2956};
+        var figure = document.getElementsByTagName("figure")[0];
+        try {
+            window.App = {};
+            window.Global = { rootUrl: 'https://ourworldindata.org/grapher' };
+            ChartView.bootstrap({ jsonConfig: jsonConfig, containerNode: figure })
+        } catch (err) {
+            figure.innerHTML = "<img src=\"/grapher/exports/grocery-bag-comparisons-ghg.svg\"/><p>Unable to load interactive visualization</p>";
+            figure.setAttribute("id", "fallback");
+            throw err;
+        }
+  </script>
+ </body>
+</html>
+</div>
+     <!-- Panel section done -->
+  </section>
+</div>
+  <script>
+    $(function () { // wait for document ready
+      // init
+      var controller = new ScrollMagic.Controller({
+        globalSceneOptions: {
+          triggerHook: 'onLeave'
+        }
+      });
+  
+      // get all slides
+      var slides = document.querySelectorAll("section.panel");
+  
+      // create scene for every slide
+      for (var i=0; i<slides.length; i++) {
+        new ScrollMagic.Scene({
+            triggerElement: slides[i]
+          })
+          .setPin(slides[i])
+          // .addIndicators() // add indicators (requires plugin)
+          .addTo(controller);
+      }
+    });
+  </script>
+<!-- 
+  ScrollMagic section swipe end -->
+  
+
+
+  <!-- The div where we will inject our map -->
+  <!-- <div id="map"></div> -->
+
+
+  
+
+  
+
+
+  <!-- API key -->
+  <script type="text/javascript" src="static/js/config.js"></script>
+
+  <!-- Leaflet-Choropleth JavaScript -->
+  <script type="text/javascript" src="../static/js/choropleth.js"></script>
+  
+  <!-- JS -->
+  <script type="text/javascript" src="static/js/logic.js"></script>
+  <script type="text/javascript" src="static/js/map.js"></script>
+
+
+<!-- jQuery -->
+<script src="static/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="static/js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="static/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="static/js/jquery.waypoints.min.js"></script>
+<!-- Stellar Parallax -->
+<script src="static/js/jquery.stellar.min.js"></script>
+<!-- YTPlayer -->
+<script src="static/js/jquery.mb.YTPlayer.min.js"></script>
+<!-- Owl carousel -->
+<script src="static/js/owl.carousel.min.js"></script>
+<!-- Magnific Popup -->
+<script src="static/js/jquery.magnific-popup.min.js"></script>
+<script src="static/js/magnific-popup-options.js"></script>
+<!-- Counters -->
+<script src="static/js/jquery.countTo.js"></script>
+<!-- Main -->
+<script src="static/js/main.js"></script>
+</body>
+</html>
+
+
+
+
